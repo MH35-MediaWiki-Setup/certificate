@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: MediaWiki certificate
+Parameters:
+  DomainName:
+    Type: String
+    Description: Domain name
+Resources:
+  Certificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      CertificateTransparencyLoggingPreference: ENABLED
+      DomainName: !Ref DomainName
+      ValidationMethod: DNS
+      DomainValidationOptions:
+        - DomainName: !Ref DomainName
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::StackName}-Certificate"
