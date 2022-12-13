@@ -11,8 +11,6 @@ Resources:
       CertificateTransparencyLoggingPreference: ENABLED
       DomainName: !Ref DomainName
       ValidationMethod: DNS
-      DomainValidationOptions:
-        - DomainName: !Ref DomainName
       Tags:
         - Key: Name
           Value: !Sub "${AWS::StackName}-Certificate"
